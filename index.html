@@ -3,6 +3,16 @@
 <head>
     <title>buatt kakakk</title>
     <style>
+      body {
+      background: url('bg1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
         h1,
 p {
 	font-family: 'Hind', sans-serif;
@@ -44,7 +54,12 @@ body {
 
 .message {
 	padding: 20px;
-	background-color: #eee;
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: white;
+	text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+
 	min-width: 400px;
 	height: 50%;
 	position: absolute;
@@ -53,13 +68,16 @@ body {
 	transform: translate(-50%, -50%);
 	z-index: 0;
 	overflow: hidden;
+
 	animation-name: openmsg;
 	animation-duration: 2s;
 	animation-timing-function: linear;
 	animation-play-state: paused;
 	animation-fill-mode: forwards;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-	border-radius: 5px;
+
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+	            0 6px 6px rgba(0, 0, 0, 0.23);
+	border-radius: 20px;
 }
 
 .heart > img:hover {
@@ -172,8 +190,7 @@ body {
 <body>
     <div class="container">
         <label>
-            <div class="heart">
-                <img src="https://raw.githubusercontent.com/DzarelDeveloper/Img/main/Lope.png">
+            <div class="heart" style="font-size: 50px; text-align: center;">  🖤
             </div>
             <input id="messageState" type="checkbox" style="display:none">
         </label>
@@ -220,6 +237,22 @@ $(".heart").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', f
 		$(".heart").addClass("no-anim").removeClass("beating");
 	$(".heart").removeClass("openHer").removeClass("closeHer");
 });
+document.addEventListener("DOMContentLoaded", function () {
+        var music = document.getElementById("backgroundMusic");
+        document.body.addEventListener("click", function () {
+            music.play();
+        }, { once: true });
+    });
+    document.addEventListener("visibilitychange", function () {
+    var music = document.getElementById("backgroundMusic");
+    if (document.hidden) {
+        music.pause();
+    } else {
+        music.play();
+    }
+});
     </script>
+    <audio id="backgroundMusic" src="backsound.mp3" type="audio/mpeg" autoplay loop></audio>
+    </audio>
 </body>
 </html>
